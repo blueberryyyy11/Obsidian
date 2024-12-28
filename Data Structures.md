@@ -302,50 +302,58 @@ x = y = 15 - сначала приравнивает у, а потом х
 а const reference можно
 
 
-##  **1. Object-Oriented Programming (OOP) in C++**
+##  **2. Object-Oriented Programming (OOP) in C++**
 
 OOP is a programming paradigm that uses objects and classes to model real-world problems. It includes the following core principles:
 
-### **Core Concepts**
+### 1. **Core Concepts**
 
 1. **Encapsulation**:
-    
     - Combines data and functions into a single unit (class/struct).
     - Access to data is controlled using access specifiers (`public`, `private`, `protected`).
+    
 2. **Inheritance**:
     
     - Allows one class to derive (inherit) properties and behavior from another class.
     - Example:
-        
-        cpp
-        
-        Copy code
-        
-        `class Base {     public:         int x; }; class Derived : public Base {     public:         void show() { std::cout << x; } };`
+	     ```cpp
+	    class Base {     
+	    public:         
+		     int x; 
+		}; 
+		class Derived : public Base {     
+		public:         
+			void show() { std::cout << x; } 
+		};`
+```
         
 3. **Polymorphism**:
     
     - Allows methods to behave differently based on the object (e.g., method overriding).
     - Achieved using virtual functions.
-        
-        cpp
-        
-        Copy code
-        
-        `class Base {     public:         virtual void print() { std::cout << "Base"; } }; class Derived : public Base {     public:         void print() override { std::cout << "Derived"; } };`
-        
+        ```cpp
+        class Base {     
+        public:         
+	        virtual void print() { std::cout << "Base"; } 
+		}; 
+		
+		class Derived : public Base {     
+		public:         
+			void print() override { std::cout << "Derived"; } 
+		};
+```
+         
 4. **Abstraction**:
     
     - Hides complexity by exposing only the essential details.
     - Achieved using abstract classes or interfaces (pure virtual functions).
 
 ---
-## **2. Struct in C++**
-
+### 2. Structs in C++
 - A `struct` is a user-defined type in C++ that groups data together.
 - Unlike in C, in C++ a `struct` can have **member functions**, **access specifiers**, and **constructors**.
 
-### **Default Access Modifier**
+### 3. Default Access Modifier
 
 - The default access in a `struct` is `public`.
 - Example:
@@ -366,9 +374,7 @@ OOP is a programming paradigm that uses objects and classes to model real-world 
 |Less overhead conceptually.|Fully OOP-focused.|
 
 ---
-
-## **3. Member Variables and Member Functions**
-
+### 4. Member Variables and Member Functions
 ### **Member Variables**
 
 - Variables declared inside a class/struct.
@@ -386,17 +392,16 @@ OOP is a programming paradigm that uses objects and classes to model real-world 
 - `protected`: Accessible within the class and its derived classes.
 
 ### Example:
-
-cpp
-
-Copy code
-
-`struct Circle {     double radius; // Member variable      double area() { // Member function         return 3.14 * radius * radius;     } };`
-
+```cpp
+struct Circle {     
+	double radius; // Member variable      
+	double area() { // Member function         
+		return 3.14 * radius * radius;     
+	} 
+};
+```
 ---
-
-## **4. Constructors**
-
+### Constructors
 Constructors are special member functions called automatically when an object is created.
 
 ### **Default Constructor**
@@ -404,52 +409,46 @@ Constructors are special member functions called automatically when an object is
 - A constructor with no parameters.
 - If no constructor is defined, C++ provides a default constructor.
 - Example:
-    
-    cpp
-    
-    Copy code
-    
-    `class Box {     public:         Box() { std::cout << "Default Constructor called"; } };`
-    
+```cpp
+    class Box {     
+	    public:         
+	    Box() { std::cout << "Default Constructor called"; } 
+	};`
+```
 
 ### **Constructor with Parameters**
 
 - Allows initializing member variables with specific values.
 - Example:
-    
-    cpp
-    
-    Copy code
-    
-    `class Rectangle {     int width, height;      public:         Rectangle(int w, int h) : width(w), height(h) {}         int area() { return width * height; } };`
-    
+  ```cpp
+  class Rectangle {     
+	  int width, height;      
+  public:         
+	  Rectangle(int w, int h) : width(w), height(h) {}         
+	  int area() { return width * height; } 
+  };
+```
 
 ### **Constructor Overloading**
 
 - Multiple constructors with different parameter lists.
 - Example:
-    
-    cpp
-    
-    Copy code
-    
-    `class Shape {     int x, y;      public:         Shape() : x(0), y(0) {}         Shape(int a, int b) : x(a), y(b) {} };`
-    
-
+	```cpp
+	class Shape {     
+		int x, y;      
+	public:         
+	Shape() : x(0), y(0) {}         
+	Shape(int a, int b) : x(a), y(b) {} };
+```
 ---
-
-## **5. Operator Overloading**
-
+### Operator Overloading
 - Operators in C++ can be redefined for user-defined types.
 - Example: Overloading the `+` operator for adding two objects.
 
 ### Syntax
-
-cpp
-
-Copy code
-
-`ReturnType operatorSymbol(Arguments) { /* Implementation */ }`
+```cpp
+ReturnType operatorSymbol(Arguments) { /* Implementation */ }`
+```
 
 ### Rules
 
@@ -458,24 +457,35 @@ Copy code
 3. Overloading does not change operator precedence.
 
 ### Example: Overloading `+` Operator
+```cpp
+class Complex {     
+int real, imag;  
 
-cpp
-
-Copy code
-
-`class Complex {     int real, imag;      public:         Complex(int r, int i) : real(r), imag(i) {}          Complex operator+(const Complex& c) {             return Complex(real + c.real, imag + c.imag);         }          void display() {             std::cout << real << " + " << imag << "i" << std::endl;         } };`
+public:         
+	Complex(int r, int i) : real(r), imag(i) {}          
+	Complex operator+(const Complex& c) {             
+		return Complex(real + c.real, imag + c.imag);         
+	}          
+	void display() {             
+		std::cout << real << " + " << imag << "i" << std::endl;         
+	} 
+};
+```
 
 ### Example: Overloading `==` Operator
-
-cpp
-
-Copy code
-
-`class Point {     int x, y;      public:         Point(int a, int b) : x(a), y(b) {}          bool operator==(const Point& p) {             return x == p.x && y == p.y;         } };`
+```cpp
+class Point {     
+	int x, y;      
+public:         
+	Point(int a, int b) : x(a), y(b) {}          
+	bool operator==(const Point& p) {             
+		return x == p.x && y == p.y;         
+	} 
+};
+```
 
 ---
-
-## **6. Key Notes for Your Exam**
+### Key Notes
 
 - **Struct and Class Differences**:
     - Remember default access levels and typical use cases.
@@ -484,4 +494,3 @@ Copy code
 - **Operator Overloading**:
     - Focus on how to overload arithmetic and comparison operators.
     - Know the rules of operator overloading (e.g., at least one operand must be user-defined).OP
-
