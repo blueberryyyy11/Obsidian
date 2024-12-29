@@ -105,7 +105,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "f9fe31c38aab8d01",
@@ -121,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Data Structures.md",
+                "file": "Untitled.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -131,7 +132,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Data Structures"
+              "title": "Backlinks for Untitled"
             }
           },
           {
@@ -140,12 +141,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Data Structures.md",
+                "file": "Untitled.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Data Structures"
+              "title": "Outgoing links from Untitled"
             }
           },
           {
@@ -167,10 +168,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Data Structures.md"
+                "file": "Untitled.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of Data Structures"
+              "title": "Outline of Untitled"
             }
           },
           {
@@ -202,8 +203,11 @@
       "obsidian-spaced-repetition:Review flashcards": false
     }
   },
-  "active": "edcb7d4779c504a7",
+  "active": "ce8234400c4e3890",
   "lastOpenFiles": [
+    "Untitled.md",
+    "Data Structures.md",
+    "Definitions library.md",
     "Obsidian/Untitled.md",
     "Obsidian/Untitled.canvas",
     "Obsidian/Pasted image 20241228175941.png",
@@ -216,9 +220,6 @@
     "Obsidian/Cpp quiz.md",
     "Obsidian/2024-12-28.md",
     "Obsidian",
-    "Untitled.md",
-    "Data Structures.md",
-    "Definitions library.md",
     "2024-12-28.md",
     "Untitled.canvas",
     "flashcards.md",
