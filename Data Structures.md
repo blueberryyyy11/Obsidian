@@ -1,8 +1,8 @@
 
-## 1. C++ Basics: References, Pointers, Memory Segments, and Operators
+##### 1. C++ Basics: References, Pointers, Memory Segments, and Operators
 
- ==References and Pointers==
-	
+### References and pointers
+
 | **`*` (Указатели)**          | **`&` (Ссылки и адреса)**                |
 | ---------------------------- | ---------------------------------------- |
 | `int *x;`                    | `int &x = y;`                            |
@@ -54,7 +54,6 @@ void f(int* &p) {
 	    }	
 ```
 
-
 ```cpp
 // если переменная уже объявлена
 int* x = new int{5};
@@ -63,9 +62,7 @@ std::cout << * x;  // dereference (обращение к куску памяти
 ```
   
 - если создать переменную и писать * слева от имени переменной - это **указатель**  
-  
 - если создать переменную и слева писать & - это **ссылка**  
-  
 - если переменная УЖЕ создана и писать * слева от имени переменной - это **dereference** 
 - переменная УЖЕ создана и слева писать & - это **адрес** данной переменной
 
@@ -112,7 +109,7 @@ int main()
 }
 ```
  
- ==**Сегменты памяти: Stack и Heap**
+### Сегменты памяти: Stack и Heap
 - **Стековая память (Stack)**: Автоматически выделяется и освобождается. Используется для локальных переменных и вызовов функций.
 - **Куча (Heap)**: Память выделяется динамически с помощью `new` и освобождается с помощью `delete`.
     ```cpp
@@ -121,7 +118,7 @@ int main()
 
     ```
 
-==Function Overloading and Default Parameters==
+### Function Overloading and Default Parameters
 **Function Overloading**
 ***когда несколько функций имеют одинаковое имя, но различное число или тип аргументов***
 
@@ -168,7 +165,7 @@ int main() {
 	могут ли быть две функции с одинаковым названием, с одинаковым числом аргументов, с одинаковым типом аргументов, но с различными возвращаемыми типами  
 	  
 	ответ:  
-	могут, 
+	могут:
 	- **Ковариантные типы возврата в виртуальных функциях**:
 		```cpp
 		class Base {
@@ -203,7 +200,7 @@ int main() {
 
 ---
 
-==**Параметры по умолчанию**==
+### Параметры по умолчанию
 Параметры по умолчанию задаются при объявлении функции. Если аргумент не указан, используется значение по умолчанию.
 
 **Пример:**
@@ -233,7 +230,7 @@ int main() {
 ```
 
 
-==***l-value vs r-value***==
+### l-value vs r-value
 - **l-value**: это то выражение, которое ХОТЬ ОДНАЖДЫ может оказаться слева от знака =.
 - **r-value**: это то выражение, которое ЛИШЬ может оказаться справа от знака =.
     ```cpp
@@ -243,7 +240,7 @@ int main() {
 
 
 ---
-==**достаточное но не необходимое условие, чтобы быть l-value**: ==
+##### достаточное но не необходимое условие, чтобы быть l-value
 если у выражения есть имя, то оно 100% l-value
 но может не иметь имени и все равно быть l-value, нпр dereference *ptr
 
@@ -296,11 +293,11 @@ x = y = 15 - сначала приравнивает у, а потом х
 а const reference можно
 
 
-## **2. Object-Oriented Programming (OOP) in C++**
+##### 2. Revising OOP in C++,  struct, Member variables and member functions, default constructors, constructors with parameters, operator overloading.
 
 OOP is a programming paradigm that uses objects and classes to model real-world problems. It includes the following core principles:
 
-==1. ***Core Concepts***==
+### Core Concepts
 
 1. **Encapsulation**:
     - Combines data and functions into a single unit (class/struct).
@@ -343,497 +340,661 @@ OOP is a programming paradigm that uses objects and classes to model real-world 
     - Achieved using abstract classes or interfaces (pure virtual functions).
 
 ---
-==2. ***Structs in C++***==
-- A `struct` is a user-defined type in C++ that groups data together.
-- Unlike in C, in C++ a `struct` can have **member functions**, **access specifiers**, and **constructors**.
+### Structs in C++
+```cpp
+#include <iostream>
+#include <cmath>
 
-**Default Access Modifier**
-- The default access in a `struct` is `public`.
-- Example:
-	```cpp
-	struct Point {
-    int x, y;
+// Структура есть множество данных (которое называется полем структуры)
+// и множество функций (называются member functions или методы структуры), которые работают с этими данными.
+struct Complex
+{
+    //---------------------------------------------------------  Поле структуры:  -----------------------------------------------------------
 
-    void display() {
-        std::cout << "x: " << x << ", y: " << y << std::endl;
-    }
-};
-
-```
+    double re;
+    double im;
+    
+    После объявления вне структуры (например в main)
+        Complex z;
+    по сути мы объявим сразу 2 переменные - z.re и z.im
+    С ними мы можем делать все действия, которые делали бы с переменными типа double, например:
+        int main()
+        {
+            Complex z;
+            z.re = 5.23;
+            z.im = ze.re - 2;
+            std::cout << z.re << " " << z.im;
+        }
+    Переменные с типом какой-то структуры называются объектами (например z-объект).
     
 
-**Difference Between Class and Struct**
+    //--------------------------------------------------------- Методы структуры: -----------------------------------------------------------
 
-|**Struct**|**Class**|
-|---|---|
-|Default access is `public`.|Default access is `private`.|
-|Typically used for simpler data structures.|Used for more complex, OOP-based designs.|
-|Less overhead conceptually.|Fully OOP-focused.|
-
----
-==3. ***Member Variables and Member Functions***
-
-**Member Variables**
-- Variables declared inside a class/struct.
-- Represent the state of the object.
-
-**Member Functions**
-- Functions defined in the class/struct.
-- Represent the behavior of the object.
-
-**Access Specifiers**
-- `public`: Accessible from anywhere.
-- `private`: Accessible only within the class/struct.
-- `protected`: Accessible within the class and its derived classes.
-
-Example:
-```cpp
-struct Circle {     
-	double radius; // Member variable      
-	double area() { // Member function         
-		return 3.14 * radius * radius;     
-	} 
-};
-```
----
-
-==***4. Constructors***==
-Constructors are special member functions called automatically when an object is created.
-
-**Default Constructor**
-- A constructor with no parameters.
-- If no constructor is defined, C++ provides a default constructor.
-- Example:
-```cpp
-    class Box {     
-	    public:         
-	    Box() { std::cout << "Default Constructor called"; } 
-	};`
-```
-
-**Constructor with Parameters**
-- Allows initializing member variables with specific values.
-- Example:
-  ```cpp
-  class Rectangle {     
-	  int width, height;      
-  public:         
-	  Rectangle(int w, int h) : width(w), height(h) {}         
-	  int area() { return width * height; } 
-  };
-```
-
-**Constructor Overloading**
-- Multiple constructors with different parameter lists.
-- Example:
-	```cpp
-	class Shape {     
-		int x, y;      
-	public:         
-	Shape() : x(0), y(0) {}         
-	Shape(int a, int b) : x(a), y(b) {} };
-```
----
-### ==5. **Operator Overloading**==
-- Operators in C++ can be redefined for user-defined types.
-- Example: Overloading the `+` operator for adding two objects.
-
-**Syntax**
-```cpp
-ReturnType operatorSymbol(Arguments) { /* Implementation */ }`
-```
-
-**Rules**
-1. You cannot overload `sizeof`, `::`, `.*`, `.` (direct member selection), or `typeid`.
-2. At least one operand must be a user-defined type.
-3. Overloading does not change operator precedence.
-
-```cpp
-#include <iostream>
-using namespace std;
-
-class Demo {
-private:
-    int value;
-
-public:
-    // Constructor
-    Demo(int val = 0) : value(val) {}
-
-    // 1. Arithmetic Operators (+, -, *, /)
-    Demo operator+(const Demo& obj) {
-        return Demo(value + obj.value);
+    double abs() const
+    {
+        return std::sqrt(re * re + im * im);
     }
+    
+        Данная функция вычисляет абсолютное значение комплексного числа.
+        Обращемся к нему через какой-то объект, например z.abs();
 
-    Demo operator-(const Demo& obj) {
-        return Demo(value - obj.value);
-    }
+        const - гласит, что данный метод не будет менять поле структуры, т.е. значения re и im не поменяются.
+        Если метод небыл бы константным, то его нельзя было бы вызвать из константного объекта, например запись
 
-    Demo operator*(const Demo& obj) {
-        return Demo(value * obj.value);
-    }
-
-    Demo operator/(const Demo& obj) {
-        if (obj.value == 0) {
-            throw runtime_error("Division by zero!");
+        void printAbs(const Complex& complex)
+        {
+            std::cout << complex.abs();
         }
-        return Demo(value / obj.value);
-    }
 
-    // 2. Comparison Operators (==, !=, <, >, <=, >=)
-    bool operator==(const Demo& obj) {
-        return value == obj.value;
-    }
+        не скомпилировалась бы, если бы функция abs небыла бы объявлена через const 
+        (так как ссылка на объект complex константная).
+    
 
-    bool operator!=(const Demo& obj) {
-        return value != obj.value;
+    void add_real(double real)
+    {
+        re += real;
     }
+    
+        Данная функция прибавляет к вещественной части нашего комплексного числа другое вещественное число.
+        Обращемся к нему через какой-то объект и передаем число, например z.add_real(3.14);
 
-    bool operator<(const Demo& obj) {
-        return value < obj.value;
+        Заметим, что данная функция не может являтся константной, если попытаться написать в его объявлении
+            void add_real(double real) const
+        код не скомпилируется, так как мы меняем состояние поля структуры на 51ой строке.
+    
+
+    //----------------------------------------------------------- Конструкторы: -------------------------------------------------------------
+
+    
+        Конструктор вызывается при создании объекта. 
+        Конструктор - это функция, у которого нету возвращаемого типа (даже void), а имя совпадает
+        с именем самой структуры. Например:
+        
+            // конструктор (1)
+            Complex(double real_part)
+            {
+                 re = real_part;
+                 im = 0;
+            }
+
+        Чтобы вызвать данный конструктор, необходимо при инициализации объекта передать вещественное число.
+        Например:
+
+            int main()
+            {
+                 Complex z1(23.5);
+                 Complex z2 = -2.4;
+            }
+
+        После записи на 81ой строке вызовется конструктор(1) и будет создан объект z1 с полем re = 23.5, im = 0.
+        После записи на 82ой строке вызовется конструктор(1) и будет создан объект z2 с полем re = -2.4, im = 0.
+
+        ЗАМЕЧАНИЕ 1: Если рядом с объявлением конструктора написать ключегое слово explicit, т. е.
+            explicit Complex(double real_part)
+        запись на 82ой строке не скомпилируется.
+        Данная запись нужна, если мы хотим вызывать конструктор лишь явным образом, а в 82ой строке она вызвана неявно.
+
+        ЗАМЕЧАНИЕ 2: Одновременно может существовать несколько конструкторов, если они отличаются аргументами. Например
+        наряду с конструктором (1) можно объявить другой конструктор
+
+            // конструктор (2)
+            Complex(double real_part, double imaginary_part)
+            {
+                 re = real_part;
+                 im = imaginary_part;
+            }
+
+        Конструктор 2 вызовется если передать при создании объекта сразу 2 вещественных числа. Например
+            int main()
+            {
+                 Complex z1(23.5);
+                 Complex z2(-2.4, 9.5);
+            }
+        После записи на 106ой строке вызовется конструктор(1) и будет создан объект z1 с полем re = 23.5, im = 0.
+        После записи на 107ой строке вызовется конструктор(2) и будет создан объект z2 с полем re = -2.4, im = 9.5.
+    
+
+    //----------------------------------------------------- Конструктор по умолчанию: -------------------------------------------------------
+
+    
+        Конструктор, который не получает никаких аргументов называется конструктором по умолчанию (default constructor).
+        Например:
+
+            // конструктор (3)
+            Complex()
+            {
+                 re = 0;
+                 im = 0;
+            }
+
+        Данный конструктор вызывается, если при создании объекта аргументов передано небыло, например:
+
+            int main()
+            {
+                 Complex z;
+            }
+        
+        ЗАМЕЧАНИЕ 1: Если в структуре нету никаких конструкторов, то компилятор генерирует собственный конструктор по умолчанию.
+        ЗАМЕЧАНИЕ 2: Если в структуре присутствует хоть 1 конструктор, то конструктор по умолчанию не генерируется. 
+        Так например, если объявить лишь конструкторы (1) и (2), то запись на 130 строке не скомпилируется. 
+        В ином случае, если никаких конструкторов не объявлено, то компиляция пройдет успешно.
+
+        ЗАМЕЧАНИЕ 3: Конструкторы (1), (2) и (3) можно объединить в 1:
+            
+            // конструктор (4)
+            Complex(double real_part = 0, double imaginary_part = 0) 
+            {
+                re = real_part;
+                im = imaginary_part;
+            }
+
+    
+
+    //------------------------------------------------------ Member initialization: ---------------------------------------------------------
+    // конструктор (5)
+    Complex(double real_part = 0, double imaginary_part = 0) 
+        : re(real_part)
+        , im(imaginary_part) 
+    {
     }
+    
+        Данная запись отличается от конструктора (4) тем, что значения переменным re и im в (4) задаются уже после их создания.
+        То что происходить в конструкторе (4) эквивалентно следующему:
+             double re;
+             double im;
+             re = real_part;
+             im = imaginary_part;
+        а в конструкторе (5) происходит следующее:
+             double re = real_part;
+             double im = imaginary_part;
+        т.е. значения в этом случае задаются при создании re и im.
+    */
 
-    bool operator>(const Demo& obj) {
-        return value > obj.value;
-    }
+    //------------------------------------------------------ Перегрузка операторов: ---------------------------------------------------------
 
-    bool operator<=(const Demo& obj) {
-        return value <= obj.value;
-    }
+    Complex& operator+=(const Complex& other)
+    {
+        re += other.re;
+        im += other.im;
 
-    bool operator>=(const Demo& obj) {
-        return value >= obj.value;
-    }
-
-    // 3. Increment/Decrement Operators (++, --)
-    // Prefix
-    Demo& operator++() {
-        ++value;
         return *this;
     }
 
-    // Postfix
-    Demo operator++(int) {
-        Demo temp = *this;
-        value++;
-        return temp;
-    }
+    Complex& operator-=(const Complex& other)
+    {
+        re -= other.re;
+        im -= other.im;
 
-    Demo& operator--() {
-        --value;
         return *this;
     }
 
-    Demo operator--(int) {
-        Demo temp = *this;
-        value--;
-        return temp;
-    }
+    Complex& operator*=(const Complex& other)
+    {
+        re = re*other.re - im*other.im;
+        im = re*other.im + im*other.re;
 
-    // 4. Logical Operators (!, &&, ||)
-    bool operator!() {
-        return value == 0;
-    }
-
-    bool operator&&(const Demo& obj) {
-        return value && obj.value;
-    }
-
-    bool operator||(const Demo& obj) {
-        return value || obj.value;
-    }
-
-    // 5. Bitwise Operators (&, |, ^, ~, <<, >>)
-    Demo operator&(const Demo& obj) {
-        return Demo(value & obj.value);
-    }
-
-    Demo operator|(const Demo& obj) {
-        return Demo(value | obj.value);
-    }
-
-    Demo operator^(const Demo& obj) {
-        return Demo(value ^ obj.value);
-    }
-
-    Demo operator~() {
-        return Demo(~value);
-    }
-
-    Demo operator<<(int shift) {
-        return Demo(value << shift);
-    }
-
-    Demo operator>>(int shift) {
-        return Demo(value >> shift);
-    }
-
-    // 6. Assignment Operators (=, +=, -=, *=, /=, etc.)
-    Demo& operator=(const Demo& obj) {
-        if (this != &obj) {
-            value = obj.value;
-        }
         return *this;
     }
 
-    Demo& operator+=(const Demo& obj) {
-        value += obj.value;
+    Complex& operator/=(const Complex& other)
+    {
+        // сделай сам
+
         return *this;
     }
 
-    Demo& operator-=(const Demo& obj) {
-        value -= obj.value;
-        return *this;
-    }
+    //------------------------------------------------------ Другие операторы: ---------------------------------------------------------
 
-    Demo& operator*=(const Demo& obj) {
-        value *= obj.value;
-        return *this;
-    }
+};  //<------------------------------------------- Заметте, структура заканчивается записью ;
 
-    Demo& operator/=(const Demo& obj) {
-        if (obj.value == 0) {
-            throw runtime_error("Division by zero!");
-        }
-        value /= obj.value;
-        return *this;
-    }
+//------------------------------------------------------ Операторы вне структуры: ---------------------------------------------------------
 
-    // 7. Subscript Operator ([])
-    int operator[](int index) {
-        // A simple example: return index multiplied by value
-        return value * index;
-    }
+Complex operator+(Complex lhs, const Complex& rhs)
+{
+    return lhs += rhs;
+}
 
-    // 8. Function Call Operator (())
-    void operator()(int factor) {
-        value *= factor;
-    }
+Complex operator-(Complex lhs, const Complex& rhs)
+{
+    return lhs -= rhs;
+}
 
-    // 9. Stream Operators (<<, >>)
-    friend ostream& operator<<(ostream& out, const Demo& obj) {
-        out << obj.value;
-        return out;
-    }
+Complex operator*(Complex lhs, const Complex& rhs)
+{
+    return lhs *= rhs;
+}
 
-    friend istream& operator>>(istream& in, Demo& obj) {
-        in >> obj.value;
-        return in;
-    }
+Complex operator/(Complex lhs, const Complex& rhs)
+{
+    return lhs /= rhs;
+}
 
-    // 10. Pointer Dereference (*)
-    int operator*() {
-        return value;
-    }
-};
+//------------------------------------------------------ Операторы << и >>: ---------------------------------------------------------
 
-int main() {
-    Demo a(10), b(20), c;
+std::ostream& operator<<(std::ostream& out, const Complex& complex)
+{
+    out << "(" << complex.re << ", " << complex.im << ")";
 
-    // Arithmetic operators
-    c = a + b;
-    cout << "a + b = " << c << endl;
-    c = a - b;
-    cout << "a - b = " << c << endl;
+    return out;
+}
 
-    // Comparison operators
-    cout << "a == b: " << (a == b) << endl;
-    cout << "a != b: " << (a != b) << endl;
-
-    // Increment/Decrement
-    ++a;
-    cout << "++a: " << a << endl;
-    a++;
-    cout << "a++: " << a << endl;
-
-    // Logical operators
-    cout << "a && b: " << (a && b) << endl;
-    cout << "!a: " << !a << endl;
-
-    // Bitwise operators
-    c = a & b;
-    cout << "a & b: " << c << endl;
-    c = a | b;
-    cout << "a | b: " << c << endl;
-
-    // Assignment operators
-    a += b;
-    cout << "a += b: " << a << endl;
-
-    // Subscript operator
-    cout << "a[2]: " << a[2] << endl;
-
-    // Function call operator
-    a(3);
-    cout << "a(3): " << a << endl;
-
-    // Stream operators
-    cout << "Enter a value for c: ";
-    cin >> c;
-    cout << "You entered: " << c << endl;
-
-    // Pointer dereference
-    cout << "*c: " << *c << endl;
-
-    return 0;
+int main()
+{
 }
 
 ```
+
 ---
-**Key Notes**
-- **Struct and Class Differences**:
-    - Remember default access levels and typical use cases.
-- **Constructors**:
-    - Understand default constructors, parameterized constructors, and constructor overloading.
-- **Operator Overloading**:
-    - Focus on how to overload arithmetic and comparison operators.
-    - Know the rules of operator overloading (e.g., at least one operand must be user-defined).OP
+##### 3. Function/class templates, Basic implementation of a fixed size array in C++, destructor, copy constructor, assignment operator, private/public/protected, classes, class vs struct, const member functions.
 
-
-## **3. Function/class templates, Basic implementation of a fixed size array in C++, destructor, copy constructor, assignment operator, private/public/protected, classes, class vs struct, const member functions.**
-	
-## Function/Class Templates
-Templates allow creating generic classes or functions that work with any data type.
-
-**==Function Templates==**
 ```cpp
+#pragma once
+#include <cstddef>
 #include <iostream>
+#include <string>
 
-// Function Template
+В данном файле объясняются
+1. Функции template
+2. Классы template
+3. Отделение интерфейса от реализации для темплейт классов
+4. Реализация мув конструктора и оператора присваивания
+
+Допустим мы хотим создать функцию, которая печатает переданное значение.
+Пример:
+void print(int x)
+{
+   std::cout << x << "\n";
+}
+Отлично! При вызове print(777); будет напечатано 777, но что если надо также уметь печатать строки?
+Разумеется если сейчас вызвать print("Hello World!"); будет ошибка компиляции. Поэтому мы решаем использовать
+перегрузку функций.
+void print(std::string str)
+{
+   std::cout << str << "\n";
+}
+Теперь если вызвать print(777); вызовется первая функция, а если вызвать print("Hello World!"); вторая.
+Но что если мы попытаемся вызвать print('c'); ? Ведь 'c' char и для этого типа нет соответствующей функции.
+Вот мы и создаем еще одну функцию
+void print(char c)
+{
+   std::cout << c << "\n";
+}
+
+--------> [ВОПРОС] Для каких еще типов надо определить данную функцию?
+Ответ: Как раз для таких случаев и созданы функции-шаблоны (function templates).
+Синтаксис определения функции-шаблона (function template) следующий
+
+template <typename «Название Типа» >
+«определение функции»
+
+Например:
+
 template <typename T>
-T add(T a, T b) {
-	return a + b;
+void print(T value)
+{
+   std::cout << value << "\n";
 }
 
-int main() {
-	std::cout << add<int>(5, 10) << std::endl;   // 15
-	std::cout << add<double>(5.5, 10.1) << std::endl; // 15.6
-	return 0;
-}
-```
-
-**==Class Templates==**
-```cpp
-#include <iostream>
-
-// Class Template
+Но данную функцию можно улучшить, так как нам ненужна копия передаваемого значения для печатания
+пусть функция получает данное значение по константной ссылке 
 template <typename T>
-class Box {
+void printValue(const T& value)
+{
+   std::cout << value << "\n";
+}
+
+В данный момент printValue не является функцией, а является шаблоном.
+На его основе создаются функции.
+
+Например: Если вызвать где-нибудь в коде printValue(777); тогда во время компиляции автоматически будет создана функция
+
+void printValue(const int& value) // T=int, так как 777-это int.
+{
+   std::cout << value << "\n";
+}
+
+А если вызвать где-нибудь еще printValue("Hello World!") тогда также будет создана функция
+
+void printValue(const char*& value) // T=char*, так как тип "Hello World!" - это char*
+{
+   std::cout << value << "\n";
+}
+
+Замечание: Если же еще где-то вызвана функция printValue(12345); новой функции создано не будет, а будет вызвана
+функция созданная на строке 61.
+
+Созданные функции называются template functions.
+Подытожим: То что было создано на строке 51 называется function template, и это не функции, а шаблоны,
+а то, что было создано на строках 61 и 68 - template function, и это уже функции.
+
+-------->[ВОПРОС] А что если мы хотим передать "Hello World" не как char*, а как std::string?
+Ответ: Вот функция, в которой передает "Hello World" как строку функции printValue несколькими способами
+void pass_hello_world_as_string()
+{
+   -------------->[СПОСОБ 1]
+   std::string str{"Hello World"}; // Напрямую создать std::string и передать.
+   printValue(str);
+
+   -------------->[СПОСОБ 2]
+   printValue<std::string>("Hello World"); // Тут значение T в printValue вручную определяется как T=std::string.
+   Подробно: На самом деле название фенерируемой функции не просто printValue, а printValue<T>
+   Вызывая printValue<std::string>, мы как-бы вручную говорим, что T=std::string и не позволяем
+   компилятору дедуцировать тип "Hello World" как char*, а заставляем сгенерировать функцию
+
+   void printValue(const std::string& value);
+
+   И сконвертировать "Hello World" в std::string.
+
+
+   -------------->[СПОСОБ 3]
+   Использовать std::string_literals. Делается это так:
+   using namespace std::string_literals; // После данной комманды, если написать s после ковычек, тогда тип текста
+   в ковычках уже будет не типа char*, а будет типа std::string.
+   printValue("Hello World"s); // Заметим, что после "Hello World" написано s, значит будет иметь тип std::string.
+}
+
+В FixedSizeArray.h мы объявили массив типа int. Но что если мы хотим уметь создавать массивы любых типов?
+Для такого случая и созданы классы-шаблоны (class templates). Определяются они почти тем же способом
+как и функции-шаблоны.
+
+template <typename T>
+class FixedSizeArray
+{
 private:
-	T value;
+   T* m_arr;           
+   std::size_t m_size;
 
 public:
-	Box(T v) : value(v) {}
+   FixedSizeArray(std::size_t size);
 
-	T getValue() const {
-		return value;
-	}
+   FixedSizeArray(std::size_t size, T val);
+
+   std::size_t size() const;
+
+   T& operator[](std::size_t index);
+
+   const T& operator[](std::size_t index) const;
+
+   ~FixedSizeArray();
+
+   FixedSizeArray(const FixedSizeArray& other);
+
+   FixedSizeArray(FixedSizeArray&& other);
+
+   FixedSizeArray& operator=(const FixedSizeArray& other);
+
+   FixedSizeArray& operator=(FixedSizeArray&& other);
 };
 
-int main() {
-	Box<int> intBox(123);
-	Box<std::string> strBox("Hello");
-
-	std::cout << intBox.getValue() << std::endl;   // 123
-	std::cout << strBox.getValue() << std::endl;  // Hello
-	return 0;
+template <typename T>
+std::size_t FixedSizeArray<T>::size() const
+{
+   return m_size;
 }
+
+template <typename T>
+FixedSizeArray<T>::FixedSizeArray(FixedSizeArray&& other)
+   : m_arr(other.m_arr)
+   , m_size(other.m_size)
+{
+   other.m_arr = nullptr;
+}
+
+template <typename T>
+FixedSizeArray<T>& FixedSizeArray<T>::operator=(const FixedSizeArray<T>& other)
+{
+   if (this == &other)
+      return *this;
+   ~FixedSizeArray<T>();
+
+   this->m_arr = new T[other.m_size]{};
+   for (std::size_t i = 0; i < other.m_size; ++i)
+   {
+      this->m_arr[i] = other.m_arr[i];
+   }
+   this->m_size = other.m_size;
+
+   return *this;
+}
+
+template <typename T>
+FixedSizeArray<T>& FixedSizeArray<T>::operator=(FixedSizeArray<T>&& other)
+{
+   if (this == &other)
+      return *this;
+   ~FixedSizeArray<T>();
+
+   this->m_arr = other.m_arr;
+   other.m_arr = nullptr;
+   this->m_size = other.m_size;
+
+   return *this;
+}
+
+template <typename T>
+FixedSizeArray<T>::~FixedSizeArray()
+{
+   delete[] m_arr;
+}
+
+template <typename T>
+FixedSizeArray<T>::FixedSizeArray(std::size_t size)
+   : m_arr(new T[size]{})
+   , m_size(size)
+{
+}
+
+template <typename T>
+FixedSizeArray<T>::FixedSizeArray(std::size_t size, T val)
+   : m_arr(new T[size])
+   , m_size(size)
+{
+   for (std::size_t i = 0; i < size; ++i)
+   {
+      m_arr[i] = val;
+   }
+}
+
+template <typename T>
+FixedSizeArray<T>::FixedSizeArray(const FixedSizeArray& other)
+   : m_arr(new T[other.m_size])
+   , m_size(other.m_size)
+{
+   for (std::size_t i = 0; i < m_size; ++i)
+   {
+      m_arr[i] = other[i];
+   }
+}
+
+template <typename T>
+T& FixedSizeArray<T>::operator[](std::size_t index)
+{
+   return m_arr[index];
+}
+
+template <typename T>
+const T& FixedSizeArray<T>::operator[](std::size_t index) const
+{
+   return m_arr[index];
+}
+
 ```
-
-**==Специализация шаблона==**
-
-Специализация шаблона позволяет изменять или настраивать стандартное поведение шаблона для конкретного типа данных.
-
-*Что это значит*
-
-Когда вы создаете шаблон, он обычно обрабатывает все типы одинаковым образом. Однако, иногда для определенных типов данных требуется особое поведение. В таких случаях используется **специализация шаблона**, которая предоставляет уникальную реализацию для конкретного типа.
-
 ---
 
-**Пример шаблона**
+### Fixed-Size Array Implementation in C++
 ```cpp
-template<typename T>
-class Example {
-public:
-    void show() {
-        std::cout << "General template" << std::endl;
-    }
-};
-```
-Этот шаблон обрабатывает любой тип `T`, выводя "General template".
+#pragma once
+#include <cstddef>
 
-**Пример специализации**
-```cpp
-// Специализация для int
-template<>
-class Example<int> {
-public:
-    void show() {
-        std::cout << "Specialized template for int" << std::endl;
-    }
-};
 
-```
-теперь:
-```cpp
-Example<double> obj1;
-obj1.show(); // Вывод: General template
+----------->[ВОПРОС] Чем отличается класс от структуры?
+Ответ: Класс отличается от структуры лишь двумя вещами.
+1. Все мемберы класса (как переменные так и функции) в структуре доступны
+повсеместно если ничего другого не писать (все public). В классе наоборот - все мемберы класса
+не доступны никому если ничего другого не писать (все private).
+2. Тип наследования от структуры - public, а тип наследования от класса - private (в этих файлах это не используется).
 
-Example<int> obj2;
-obj2.show(); // Вывод: Specialized template for int
+Интерфейс - всё то, что позволяет общаться с классом вне самого класса
+(для нижеопределенного класса - это функции, объявленные под public:)
 
-```
+Хорошей практикой является декларировать мембер функции в одном файле, а имплементировать в другом (Interface Segregation Principle).
+В данном файле написаны лишь декларации упомянутых функций, их имплементация может быть найдена в файле FixedSizeArray.cpp.
 
-***Что происходит в памяти***
 
-- **Общий шаблон**: Компилятор генерирует один набор инструкций для обработки любого типа.
-- **Специализация**: Компилятор создает отдельную реализацию для типа `int`, которая отличается от стандартного поведения.
----
+class FixedSizeArray
+{
 
-**==Fixed-Size Array Implementation in C++==**
-```cpp
-#include <iostream>
 
-template <typename T, size_t N>
-class FixedArray {
+Если написать внутри класса ключевое слово private: тогда то, что окажется под этим модификатором
+доступа станет недоступным нигде, кроме самого класса. Если же писать модификатор доступа public:
+то всё то, что под ним окажется станет доступным.
+
+Данный класс обладает двумя переменными - m_arr и m_size с модификатором доступа private, а также
+функциями size, operator[], конструкторами и деструктором с модификатором доступа public.
+
+
 private:
-	T data[N];
+   int* m_arr;
+   std::size_t m_size;
+
+
+   ----------->[ВОПРОС] Почему m_arr и m_size в private?
+   Ответ: Так как объект данного класса из себя должен представлять массив фиксированной длины (FixedSizeArray),
+   следовательно размер массива на который указывает m_arr должен равнятся значению m_size всегда и повсюду.
+   Следовательно мы не хотим, чтобы у человека, который будет использовать наш класс в своих грязных целях
+   даже появилась бы мысль поменять значение m_arr или m_size, a даже если бы и появилась бы - то он не смог.
+
+   В общем и целом - модификаторы доступа нужны, чтобы в самом классе не появлялось бы внутренних противоречий.
+
+   ----------->[ВОПРОС] Почему у m_size тип std::size_t?
+   Ответ: std::size_t определен в заголовочном файле <cstddef> и представляет из себя неотрицательный целочисленный
+   тип, который способен в себе хранить наибольший размер куска памяти, который поддерживается самой системой.
+   В 32-битной системе размер std::size_t 32 бита, а в 64-битной системе размер std::size_t 64 бита.
+   Его будем использовать для размеров, индексов и количества.
+
+
 
 public:
-	T& operator[](size_t index) {
-		if (index >= N) throw std::out_of_range("Index out of bounds");
-		return data[index];
-	}
 
-	const T& operator[](size_t index) const {
-		if (index >= N) throw std::out_of_range("Index out of bounds");
-		return data[index];
-	}
+   FixedSizeArray(std::size_t size);
 
-	size_t size() const {
-		return N;
-	}
+   FixedSizeArray(std::size_t size, int val);
+
+   std::size_t size() const;
+
+   int& operator[](std::size_t index);
+
+   const int& operator[](std::size_t index) const;
+
+   ~FixedSizeArray();
+
+   FixedSizeArray(const FixedSizeArray& other);
+
 };
 
-int main() {
-	FixedArray<int, 5> arr;
+```
 
-	for (size_t i = 0; i < arr.size(); ++i) {
-		arr[i] = i * 2;
-	}
+```cpp
+Для того, чтобы отделить имплементацию от декларации всю имплементацию
+функций переводим в данный .cpp файл, а в .h файле пишем декларации функций.
 
-	for (size_t i = 0; i < arr.size(); ++i) {
-		std::cout << arr[i] << " ";
-	}
-	return 0;
+Сперва инклюднем .h файл, где задекларированы все функции, которые будем имплементировать. 
+#include "FixedSizeArray.h"
+
+Если декларация в классе имеет вид
+ 
+«возвращаемый тип» «название функции»(«аргументы»);
+
+То в .cpp файле имплементация функции будет иметь вид
+
+«возвращаемый тип» «название класса»::«название функции»(«аргументы»)
+{
+    «тело функции»;
 }
+
+Например, в .h файле функция size задекларирована как
+
+std::size_t size() const;
+
+а в данном файле она должа иметь нижеприведенный вид,
+причем полное название функции size - это FixedSizeArray::size().
+std::size_t FixedSizeArray::size() const
+{
+	return m_size;
+}
+
+То, что было сказано для обычных мембер-функций верно и для конструкторов,
+т.е. если конструктор задекларирован в .h файле как
+
+«название класса»(«аргументы»)
+
+то ее имплементация будет иметь вид
+
+«название класса»::«название класса»(«аргументы»).
+ 
+Ниже можете видеть пример конструктора, который получает размер массива,
+создает сам массив в heap-е, сохранив указатель на первый элемент m_arr,
+также сохраняет значение переданного размера в m_size.
+FixedSizeArray::FixedSizeArray(std::size_t size)
+	: m_arr(new int[size])
+	, m_size(size)
+{
+}
+
+Данный же конструктор принимает 2 аргумента
+1. Размер массива
+2. Значение, которым надо заполнить все элементы массива
+Делает данный конструктор то же самое, что и верхний конструктор,
+просто дополнительно проходит по всем элементам созданного массива и 
+приравнивает к каждому элементу переданное значение val.
+FixedSizeArray::FixedSizeArray(std::size_t size, int val)
+	: m_arr(new int[size])
+	, m_size(size)
+{
+	for (std::size_t i = 0; i < size; ++i)
+	{
+		m_arr[i] = val;
+	}
+}
+
+О данных двух функциях уже было сказано в .h файле.
+Они просто возвращают референс на элемент массива соответствующий индексу.
+int& FixedSizeArray::operator[](std::size_t index)
+{
+	return m_arr[index];
+}
+
+const int& FixedSizeArray::operator[](std::size_t index) const
+{
+	return m_arr[index];
+}
+
+В деструкторе просто удаляем массив, на который указывает m_arr.
+FixedSizeArray::~FixedSizeArray()
+{
+	delete[] m_arr;
+}
+
+В конструкторе копирования создается новый массив того же размера, что и
+массив переданного объекта other, после чего копируется содержание массива other.m_arr
+в m_arr.
+FixedSizeArray::FixedSizeArray(const FixedSizeArray& other)
+	: m_arr(new int[other.m_size])
+	, m_size(other.m_size)
+{
+	for (std::size_t i = 0; i < m_size; ++i)
+	{
+		m_arr[i] = other[i];
+	}
+}
+
 ```
 
 ---
 
 ## Destructor, Copy Constructor, and Assignment Operator
 
-**==Destructor==**
+#### Destructor
 - A special member function used to release resources when an object is destroyed.
 ```cpp
 class MyClass {
@@ -844,7 +1005,7 @@ public:
 };
 ```
 
-**==Copy Constructor==**
+#### Copy Constructor
 - Creates a new object as a copy of an existing object.
 ```cpp
 class MyClass {
@@ -861,7 +1022,7 @@ public:
 };
 ```
 
-**==Assignment Operator==**
+#### Assignment Operator
 - Assigns the values from one object to another after both have been created.
 ```cpp
 class MyClass {
@@ -886,7 +1047,7 @@ public:
 
 ## Access Specifiers: Private, Public, Protected
 
-**==Public==**
+#### Public
 - Members are accessible from outside the class.
 ```cpp
 class MyClass {
@@ -895,7 +1056,7 @@ public:
 };
 ```
 
-**==Private==**
+#### Private
 - Members are accessible only within the class.
 ```cpp
 class MyClass {
@@ -904,7 +1065,7 @@ private:
 };
 ```
 
-**==Protected==**
+#### Protected
 - Members are accessible within the class and its derived classes.
 ```cpp
 class Base {
@@ -914,8 +1075,8 @@ protected:
 ```
 
 ---
+# Classes vs. Structs
 
-## Classes vs. Structs
 - **Class**: Members are private by default.
 - **Struct**: Members are public by default.
 ```cpp
@@ -931,8 +1092,8 @@ public:
 ```
 
 ---
+# Const Member Functions
 
-## Const Member Functions
 - Functions that do not modify the state of the object.
 ```cpp
 class MyClass {
@@ -955,44 +1116,457 @@ public:
 
 
 
-### **4. l-value/r-value references, std::move, move constructor, move assignment operator, Type casting in c++: static_cast, reinterpret_cast, const_cast.**
-## l-value и r-value
+##### 4. l-value/r-value references, std::move, move constructor, move assignment operator, Type casting in c++: static_cast, reinterpret_cast, const_cast.
+### **l-value и r-value**
 
-**==l-value==**
-- **Определение**: l-value (left value) — это объект, который занимает определённое место в памяти и имеет адрес.
-- **Примеры**:
-  ```cpp
-  int x = 10; // x — это l-value
-  int& ref = x; // Ссылка на l-value
-  ```
-- **Особенности**:
-  - l-value всегда можно использовать как левую часть присваивания (`=`).
-  - l-value имеет продолжительное время жизни.
+```cpp
+#include <iostream>
+#include <cmath>
+#include <string>
 
-**==r-value==**
-- **Определение**: r-value (right value) — это временное значение, которое не имеет адреса в памяти (например, литералы или результат выражений).
-- **Примеры**:
-  ```cpp
-  int y = 5 + 3; // 5 + 3 — это r-value
-  ```
-- **Особенности**:
-  - r-value нельзя использовать как левую часть присваивания.
-  - r-value имеет временное время жизни и может быть использовано только один раз.
+// В данной функции объясняется, что такое l-value и r-value выражения, а также характеристики выражений в C++.
+void l_value_vs_r_value_and_expression_characteristics()
+{
+   l-value (или left-value) есть выражение, которое может хотя бы раз оказаться слева от знака =.
+   r-value (или right-value) есть выражение, которое может оказаться лишь справа от знака = и не может оказаться слева.
+   Например:
 
-**==r-value ссылки==
-- Использование `T&&` позволяет работать с r-value:
-  ```cpp
-  void process(int&& temp) {
-	  std::cout << temp << std::endl;
-  }
-  process(5); // Передача r-value
-  ```
-- r-value ссылки полезны для оптимизации производительности (например, в конструкторах перемещения).
+   int x = 10;          x - lvalue, так как можно написать x=12;
+   const double y = 19; y - lvalue, так как на этой же строке y оказалась слева от знака =.
+   8;                   8 - r-value, так как нельзя написать, например, 8=1+3;
+   x + 1;               x+1 - r-value, так как нельзя написать, например, x+1=666;
+   "Hello World";       "Hello World" - r-value, так как нельзя написать, например "Hello World" = "Goodbye World";
+
+   У всякого выражения в C++ есть 3 характеристики:
+   1. Type        (тип)
+   2. Value       (значение)
+   3. Side-Effect (побочный эффект)
+
+   Примеры характеристик выражений:
+
+   Пример 1.
+   {
+      double a = 19;
+      a + 1; 1. double
+             2. 20
+             3. Ничего
+   }
+   Пример 2.
+   {
+      int a = 7;
+      a = 7; 1. int
+             2. 7 (так как если напечатать std::cout << (a=7); выведется 7)
+             3. Изменить значение a на 7
+   }
+   Пример 3.
+   {
+      "Hello World"; 1. char*
+                     2. "Hello World"
+                     3. Ничего
+   }
+   Пример 4.
+   {
+      int a = 15;
+      ++a;   1. int
+             2. 16 (так как если напечатать std::cout << (++a); выведется 16)
+             3. Увеличить значение a на 1
+   }
+   Пример 5.
+   {
+      int a = 15;
+      a++;   1. int
+             2. 15 (так как если напечатать std::cout << (a++); выведется 15)
+             3. Увеличить значение a на 1
+   }
+
+   Подытожим:
+   {
+      int a = 15;
+      std::cout << ++a << "\n"; Напечатает 16, т.е. новое значение а. <---------------------------------------------
+      std::cout << a << "\n";   Напечатает 16, так как значение а увеличилось на 1 из-за побочного эффекта ++a.    |
+   }                            |                                                                                   | Сравните
+   {                            |                                                                                   |
+      int a = 15;               |                                                                                   |
+      std::cout << a++ << "\n"; Напечатает 15, т.е. исходное значение а. <------------------------------------------
+      std::cout << a << "\n";   Напечатает 16, так как значение а увеличилось на 1 из-за побочного эффекта a++.
+   }
+
+   Таким образом префиксный инкремент и постфикстный инкремент увеличивают переменную на 1,
+   но значение префиксного инкремента - новое значение переменной после увеличения,
+   а значение постфиксного инкремента - исходное значение переменной до увеличения.
+   
+   Кроме того:
+   ++x; l-value, так как можно написать, например, ++x=12; <---Значение х поменяется на 12.
+   x++; r-value, так как нельзя написать, например, x++=12; <---Ошибка компиляции.
+
+   ЗАМЕЧАНИЕ: Всё у чего есть имя l-value, но всё у чего нет имени ещё не значит, что r-value.
+             Достаточным условием того, что какое-то выражение было l-value, является существование имени для этого выражения.
+   Например: 
+             1. x;   x-название переменной => оно точно l-value.
+             2. ++x; ++x не название переменной, но это всё ещё l-value.
+             3. x++; x++ не название переменной, но в этот раз это r-value.
+
+   Другие примеры l-value выражений:
+   x = y;
+   x += 1;
+   x = x * 20;
+   --x;
+
+   Другие примеры r-value выражений:
+   x + 1;
+   std::abs(x);
+   std::sqrt(y);
+   10;
+   's';
+   3.14;
+   "This is too an r-value expression";
+   x--;
+}
+
+void references_and_const_references()
+{
+   int x = 19;
+   int copy = x;
+
+   int& ref = x;
+
+   copy = 777;
+   std::cout << x << "\n";
+   ref = 777;
+   std::cout << x << "\n";
+
+   const int constantInteger = 7;
+   const int& constantReference = constantInteger;
+
+   const int& constantReference2 = x;
+   const int& constantReference3 = x + 123;
+}
+
+void print(std::string str)
+{
+   std::cout << str;
+}
+
+void print1(std::string& str)
+{
+   std::cout << str;
+}
+
+void print2(const std::string& str)
+{
+   std::cout << str;
+}
+
+int main()
+{
+}
+
+
+```
+
+```cpp
+#include <iostream>
+
+В данной функции объясняется что такое r-value референс.
+void r_value_reference()
+{
+   Будет использовано позже.
+   int x = 10;
+
+   Те референсы, которые были обсуждены в файле References.cpp называются l-value референсами
+   и они присутствовали в C++ с самого начала его существования.
+   
+   Называются они l-value референсами так как неконстантные референсы могут ссылаться лишь на
+   l-value выражения. Но как мы уже поняли есть потребность создавать функции,
+   которые получали бы l-value значения по-ссылке (чтобь избежат копирования),
+   но могли бы также получать r-value значения (см. функцию print2 в References.cpp).
+   Именно по-этому было решено разрешать присваивать константным ссылкам как l-value, так и r-value значения.
+   
+   Но что если по каким-то причинам мы хотим создать отдельно 2 функции с одним и тем же именем,
+   так, чтобы первая из них вызывалась бы если было передано l-value значение, а вторая вызывалась
+   бы, если было передано r-value значение?
+   
+   Как раз для этого случая существуют r-value референсы, которые были добавлены в C++11,
+   их синтаксис следующий:
+   
+   <тип>&& <название референса> = <r-value значение>;
+   
+   Например:
+   int&& r_value_ref = x + 1;
+
+   Замечания:
+   1. r-value референс может ссылаться лишь на r-value значение (удлинняя жизнь временной переменной).
+      т.е. запись int&& ref=x; привела бы к ошибке компиляции, так как х - l-value.
+   2. r-value референсы как и l-value референсы должны быть инициализированны, т.е. нельзя писать
+      int&& ref; <---- Ошибка компиляции.
+
+   --------->[ВОПРОС] Как уже было сказано r-value референс может ссылаться лишь на r-value значение,
+                      но сам этот референс представляет из себя нечто l-value или r-value?
+                      То есть может ли он оказаться слева от знака =?
+   Ответ: Так как у r_value_ref есть имя, то оно является l-value, как уже было сказано в References.cpp
+   Подытожив: r_value_ref может ссылаться лишь на r-value значение, но сам r_value_ref - l-value.
+   Пример: Можно менять значение r-value референса
+   r_value_ref = 19;
+   ++r_value_ref;
+   r_value_ref /= 10;
+
+   Замечание: Значение константных r-value референсов поменять нельзя и ссылаться они могут
+              лишь на r-value выражения. Пример:
+   const int&& const_r_value_ref = 10 / x + 3 - r_value_ref;
+
+   --------->[ВОПРОС] На что могут ссылаться константные/неконстантные l-value/r-value референсы?
+   Ответ: Смотри таблицу
+   
+                      |           non-const               |                const                |
+   -------------------|-----------------------------------|-------------------------------------|
+    l-value reference | only non-const l-value expression | any l-value and r-value expression  |
+   -------------------|-----------------------------------|-------------------------------------|
+    r-value reference |     only r-value expression       |      only r-value expression        | 
+   -------------------|-----------------------------------|-------------------------------------|
+   
+}
+
+Далее приводятся примеры функций, принимающих l-value и r-value референсы.
+
+void f(int& x) // принимает неконстантный l-value референс.
+{
+   std::cout << "x was l-value\n";
+}
+
+void f(int&& x) // принимает неконстантный r-value референс.
+{
+   std::cout << "x was r-value\n";
+}
+
+Теперь, если написать:
+int main()
+{
+   int var = 17;
+   f(var);
+   f(var + 1);
+   f(777);
+}
+
+То на 78-ой строке вызовется первая функция,
+а на 80-ой и 81-ой строке вызовется вторая и будет напечатано
+
+x was l-value
+x was r-value
+x was r-value
+
+Всё из-за того, что
+1. На 79-ой строке аргумент переданный функции является l-value и будет вызвана первая функция
+2. На 80-ой строке аргумент переданный функции является r-value и будет вызвана вторая функция
+3. На 81-ой строке аргумент переданный функции является r-value и будет вызвана вторая функция
+
+Другой пример с константным l-value референсом:
+void g(const int& x) // принимает константный l-value референс.
+{
+   std::cout << "x was l-value\n";
+}
+
+void g(int&& x)      // принимает неконстантный r-value референс.
+{
+   std::cout << "x was r-value\n";
+}
+
+Теперь, если написать:
+int main()
+{
+   int var = 17;
+   g(var);
+   g(var + 1);
+   g(777);
+}
+
+-------->[ВОПРОС]: И первая и вторая функция могут принимать r-value значения,
+                   Так какая из них вызовется на 114-ой и 115-ой строках?
+Ответ: Как ни странно - приоритет получения r-value значений дается именно r-value референсам.
+        Таким образом мы увидим тот же результат, что и для f:
+
+        x was l-value
+        x was r-value
+        x was r-value
+
+-------->[ВОПРОС]: Чем отличаются функции g и f?
+Ответ: Нельзя передать f константную переменную, например
+      
+        const int val = 777;
+        f(val);
+
+        Не скомпилируется, так как
+        1. f на 64-ой принимает неконстантную ссылку, следовательно нельзя передать константное.
+        2. f на 69-ой строке принимает r-value референс, следовательно нельзя передать l-value.
+        а val константное l-value значение.
+
+        С другой стороны f можно поменять на g в 131-ой строке и компиляция пройдет.
+
+-------->[ВОПРОС]: Что изменилось бы если в 69-ой и 103-ей строках r-value референсы были константными, т.е.
+                   void f(const int&& x)
+                   void g(const int&& x)
+Ответ: Всё что было сказано до этого не изменилось бы. Единственное отличие было бы в том,
+        что внутри самих функций x нельзя было бы поменять.
+
+-------->[САМЫЙ ВАЖНЫЙ ВОПРОС]: Для чего это всё нужно?
+Ответ: Нужно всё для того, чтобы изменить поведение функции в зависимости от того было ли
+        переданно данной функции l-value или r-value, а надобность этого будет понятна
+        после прочтения MoveSemantics.cpp.
+
+```
 
 ---
 
-## ==std::move==
+### **std::move**
 
+```cpp
+#include <iostream>
+#include <utility>
+#include <string>
+
+В данном файле мы поверхностно поймем, что такое move-семантика.
+
+Рассмотрим следующий сценарий: Есть функция, которая принимает std::string по значению
+void f(std::string str)
+{
+   какие-то действия с str.
+}
+
+Заметим, что при следующей передаче переменной функции
+
+int main()
+{
+   std::string name="Barak Obama";
+   f(name);
+}
+  
+Переменная name будет скопирована в str.
+
+Подытожим: В 17ой строке будет создана переменная name
+ _______________
+|     name      |
+|---------------|
+| "Barak Obama" |
+ ---------------
+
+А в 18ой строке name будет скопирован в str функции f и будем иметь
+ _______________         _______________
+|     name      |       |      str      |
+|---------------|       |---------------|
+| "Barak Obama" |       | "Barak Obama" |
+ ---------------         ---------------
+
+-------->[ВОПРОС] А что делать если переменная name нам в main уже ненужна?
+                  Ведь тогда логично было бы не создавать копию name, а просто "передать"?
+Ответ: Если функцию f изменить нельзя - как раз для этого используется std::move.
+       Если написать
+ 
+       int main()
+       {
+          std::string name="Barak Obama";
+          f(std::move(name));
+       }
+
+       тогда name не будет скопирован в str, а будет "сдвинут" str.
+
+Подытожим: В 45ой строке будет создана переменная name
+ _______________
+|     name      |
+|---------------|
+| "Barak Obama" |
+ ---------------
+
+А в 46ой строке значение name будет мувнуто в str
+ _________________         _______________
+|       name      |       |      str      |
+|-----------------|       |---------------|
+| пустое значение |       | "Barak Obama" |
+ -----------------         ---------------
+
+Таким образом значение name не будет скопировано, но будет использоваться в str.
+Для ясности: "Barak Obama" сохраняется при помощи указателя и вместо того,
+             чтобы скопировать саму строку - копируется лишь указатель, а старый указатель
+             стирается, то есть:
+1. Сперва создается переменная name
+
+ ______
+| name |
+|------|
+|   -----------------> "Barak Obama"   
+ ------
+
+ 2. При создании переменной str копируется лишь адрес строки, а указатель в name стирается
+
+                     _____
+                    | str |
+                    |-----|
+                    |  |  |
+                     --|--
+                       |
+                       |
+ ______                 |
+| name |                |
+|------|                v
+|      |               "Barak Obama"
+ ------
+
+---------->[ЗАМЕЧАНИЕ] После std::move переменной name пользоваться нельзя, непонятно какое значение
+                       внутри name, что приводит к undefined behavior.
+
+Поймём как работает std::move.
+
+Снова вернемся к примеру из R-valueReferences.cpp
+void g(const int& x) // принимает константный l-value референс.
+{
+   std::cout << "x was l-value\n";
+}
+
+void g(int&& x)      // принимает неконстантный r-value референс.
+{
+   std::cout << "x was r-value\n";
+}
+
+------>[ВОПРОС] Что если у нас есть переменная int val=555; и мы хотим передать его
+                функции g, но хотим, чтобы вызвалась не функция на строке 99, а на 104?
+                Причем мы не хотим менять сами функции.
+Очень Странный Ответ: Использовать std::move, а именно
+
+       int val = 555;
+       g(std::move(val)); // напечатает "x was r-value"
+
+------>[ВОПРОС] Что же делает std::move? Почему это работает так?
+Ответ: Единственная функция std::move - полученное l-value значение преобразовать в r-value.
+       Как раз поэтому на строке 114 вызовется функция с строки 104, хоть val и l-value.
+
+------>[ВОПРОС] А как же тогда всё работает для std::move(name) из строки 46?
+Ответ: std::string имеет 2 конструктора. Первый из них - это copy-constructor, который принимает l-value reference.
+       
+       string(const string& other);
+
+       Данный конструктор копирует всю строку other в создаваемый объект.
+       Второй же конструктор принимает r-value reference.
+
+       string(string&& other);
+
+       И копирует лишь указатель строки other в создаваемый объект, далее стирает указатель other (именно поэтому тут не const).
+       
+       Таким образом, вернувшись к функции f, если переменная была передана ей не используя std::move, т.е.
+       int main()
+       {
+          std::string name="Barak Obama";
+          f(name);
+       }
+       То для name будет вызван copy-constructor, так как name l-value и вызовется конструктор на строке 123.
+
+       Если же перед передачей сделать std::move(name), т.е.
+       int main()
+       {
+          std::string name="Barak Obama";
+          f(std::move(name));
+       }
+       Тогда из-за того, что std::move(name) r-value вызовится конструктор, принимающий r-value reference на строке 128.
+       Конструктор на строке 128 называется мув конструктором.
+
+```
 - **Определение**: `std::move` — это функция, которая преобразует l-value в r-value, позволяя передать временный объект в функции или конструкторы перемещения.
 - **Пример**:
   ```cpp
@@ -1005,10 +1579,10 @@ public:
 
 ---
 
-## ==Конструктор перемещения (move constructor)==
+## **Конструктор перемещения (move constructor)**
 
-- **Определение**: Конструктор перемещения позволяет передавать ресурсы (например, динамическую память) от одного объекта к другому без копирования.
-- **Синтаксис**:
+- ***Определение***: Конструктор перемещения позволяет передавать ресурсы (например, динамическую память) от одного объекта к другому без копирования.
+- *Синтаксис:
   ```cpp
   class MyClass {
   private:
@@ -1034,10 +1608,10 @@ public:
 
 ---
 
-## ==Оператор присваивания с перемещением (move assignment operator)==
+### Оператор присваивания с перемещением (move assignment operator)
 
-- **Определение**: Оператор перемещающего присваивания используется для переноса ресурсов между объектами.
-- **Синтаксис**:
+- ***Определение***: Оператор перемещающего присваивания используется для переноса ресурсов между объектами.
+- *Синтаксис*:
   ```cpp
   MyClass& operator=(MyClass&& other) noexcept {
 	  if (this != &other) {
@@ -1054,7 +1628,7 @@ public:
 
 ---
 
-## ==Приведение типов в C++ (type casting in c++)==
+# Приведение типов в C++ (type casting in c++)
 
 ### static_cast
 - **Определение**: Используется для проверяемого преобразования типов во время компиляции.
@@ -1088,11 +1662,11 @@ public:
   - Может использоваться для работы с функциями, которые не принимают `const` параметры.
 
 ---
-### 5. Virtual functions, function overloading vs function overriding, usage of virtual functions, examples, pure virtual functions, virtual destructors, exception handling.
+##### 5. Virtual functions, function overloading vs function overriding, usage of virtual functions, examples, pure virtual functions, virtual destructors, exception handling.
 
-### ==Виртуальные функции==
+## Виртуальные функции
 
-==Что такое виртуальная функция?==
+#### Что такое виртуальная функция?
 - **Определение**: Виртуальная функция — это функция, объявленная с использованием ключевого слова `virtual` в базовом классе, которая может быть переопределена в производных классах.
 - **Пример**:
   ```cpp
@@ -1122,9 +1696,9 @@ public:
 
 ---
 
-### ==Перегрузка функций vs Переопределение функций==
+## Перегрузка функций vs Переопределение функций
 
-==Перегрузка функций (Function Overloading)==
+#### Перегрузка функций (Function Overloading)
 - **Определение**: Перегрузка функций — это создание нескольких функций с одним и тем же именем, но с разными параметрами.
 - **Пример**:
   ```cpp
@@ -1139,7 +1713,7 @@ public:
   - Происходит на этапе компиляции.
   - Различается по сигнатурам функций.
 
-==Переопределение функций (Function Overriding)==
+#### Переопределение функций (Function Overriding)
 - **Определение**: Переопределение — это предоставление новой реализации функции в производном классе.
 - **Пример**:
   ```cpp
@@ -1162,12 +1736,13 @@ public:
 
 ---
 
-### ==Использование виртуальных функций==
+## Использование виртуальных функций
+
 - **Основные случаи применения**:
   - Создание интерфейсов или базовых классов для наследования.
   - Реализация полиморфизма для обработки объектов различных типов через общий интерфейс.
 
-==Пример==
+*Пример*
 ```cpp
 class Animal {
 public:
@@ -1204,7 +1779,7 @@ int main() {
 
 ---
 
-### ==Чисто виртуальные функции (Pure Virtual Functions)==
+## Чисто виртуальные функции (Pure Virtual Functions)
 - **Определение**: Чисто виртуальная функция — это функция, объявленная в базовом классе, которая не имеет реализации и должна быть реализована в производных классах.
 - **Синтаксис**:
   ```cpp
@@ -1234,7 +1809,8 @@ int main() {
 
 ---
 
-### ==Виртуальные деструкторы==
+## Виртуальные деструкторы
+
 - **Определение**: Виртуальный деструктор позволяет корректно освобождать ресурсы производных классов через указатели на базовый класс.
 - **Пример**:
   ```cpp
@@ -1264,12 +1840,12 @@ int main() {
 
 ---
 
-### ==Обработка исключений (Exception Handling)==
+## Обработка исключений (Exception Handling)
 
-==Что такое исключения?==
+### Что такое исключения?
 - **Определение**: Исключения используются для обработки ошибок или неожиданных ситуаций в программе.
 
-==Синтаксис==
+*Синтаксис*
 ```cpp
 try {
     // Код, который может вызвать исключение
@@ -1280,7 +1856,7 @@ try {
 }
 ```
 
-==Пример==
+*Пример*
 ```cpp
 #include <iostream>
 #include <stdexcept>
@@ -1303,6 +1879,6 @@ int main() {
 }
 ```
 
-==Особенности==
+**Особенности**
 - Используйте исключения для критических ошибок.
 - Не рекомендуется бросать исключения в конструкторах или деструкторах.
