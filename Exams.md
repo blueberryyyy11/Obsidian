@@ -1,0 +1,27 @@
+### Exam Study Schedule (Dec 31 - Jan 22)
+
+| Date                    | Morning Session 1 (8:00-9:30 AM)   | Morning Session 2 (9:45-11:15 AM)  | Afternoon Session 1 (1:30-3:00 PM) | Afternoon Session 2 (3:15-4:45 PM) | Evening Session (7:15-8:45 PM) |
+| ----------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ------------------------------ |
+| **Dec 31**              | DS - 2 Lectures + 5 Problems       | Calculus - 2 Lectures + 5 Problems | Math Logic - 2 Lectures            | Algebra - 2 Lectures               | Mock Problems (DS)             |
+| **Jan 1**               | DS - 2 Lectures + 5 Problems       | Calculus - 2 Lectures + 5 Problems | Math Logic - 2 Lectures            | Algebra - 2 Lectures               | Mock Problems (DS)             |
+| **Jan 2**               | DS - 2 Lectures + 5 Problems       | Calculus - 2 Lectures + 5 Problems | Math Logic - 2 Lectures            | Algebra - 2 Lectures               | Mock Problems (DS)             |
+| **Jan 3**               | DS - 2 Lectures + 5 Problems       | Calculus - 2 Lectures + 5 Problems | Math Logic - 2 Lectures            | Algebra - 2 Lectures               | Mock Problems (DS)             |
+| **Jan 4**               | DS - 2 Lectures + 5 Problems       | Calculus - 2 Lectures + 5 Problems | Math Logic - 2 Lectures            | Algebra - 2 Lectures               | Mock Problems (Calculus)       |
+| **Jan 5**               | DS - 2 Lectures + 5 Problems       | Calculus - 2 Lectures + 5 Problems | Math Logic - 2 Lectures            | Algebra - 2 Lectures               | Mock Problems (Calculus)       |
+| **Jan 6**               | DS - 2 Lectures + 5 Problems       | Calculus - 2 Lectures + 5 Problems | Math Logic - 2 Lectures            | Algebra - 2 Lectures               | Mock Problems (Calculus)       |
+| **Jan 7 (DS Exam)**     | DS - Review + 10 Problems          | Calculus - Review + 10 Problems    | Math Logic - Review                | Algebra - Review                   | Break                          |
+| **Jan 8**               | Calculus - 2 Lectures + 5 Problems | Math Logic - 2 Lectures            | Algebra - 2 Lectures               | Linux - 2 Lectures                 | Mock Problems (Math Logic)     |
+| **Jan 9**               | Calculus - 2 Lectures + 5 Problems | Math Logic - 2 Lectures            | Algebra - 2 Lectures               | Linux - 2 Lectures                 | Mock Problems (Math Logic)     |
+| **Jan 10**              | Calculus - 2 Lectures + 5 Problems | Math Logic - 2 Lectures            | Algebra - 2 Lectures               | Linux - 2 Lectures                 | Mock Problems (Math Logic)     |
+| **Jan 11 (Calc Exam)**  | Break                              | Break                              | Break                              | Break                              | Break                          |
+| **Jan 12**              | Math Logic - 2 Lectures            | Algebra - 2 Lectures               | Linux - 2 Lectures                 | Mock Problems                      | Mock Problems                  |
+| **Jan 13**              | Math Logic - 2 Lectures            | Algebra - 2 Lectures               | Linux - 2 Lectures                 | Mock Problems                      | Mock Problems                  |
+| **Jan 14**              | Math Logic - 2 Lectures            | Algebra - 2 Lectures               | Linux - 2 Lectures                 | Mock Problems                      | Mock Problems                  |
+| **Jan 15 (ML Exam)**    | Break                              | Break                              | Break                              | Break                              | Break                          |
+| **Jan 16**              | Algebra - 2 Lectures               | Linux - 2 Lectures                 | Mock Problems                      | Final Review                       | Final Review                   |
+| **Jan 17**              | Algebra - 2 Lectures               | Linux - 2 Lectures                 | Mock Problems                      | Final Review                       | Final Review                   |
+| **Jan 18 (Alg Exam)**   | Break                              | Break                              | Break                              | Break                              | Break                          |
+| **Jan 19**              | Linux - 2 Lectures                 | Mock Problems                      | Final Review                       | Final Review                       | Final Review                   |
+| **Jan 20**              | Linux - 2 Lectures                 | Mock Problems                      | Final Review                       | Final Review                       | Final Review                   |
+| **Jan 21**              | Linux - 2 Lectures                 | Mock Problems                      | Final Review                       | Final Review                       | Final Review                   |
+| **Jan 22 (Linux Exam)** | Break                              | Break                              | Break                              | Break                              | Break                          |

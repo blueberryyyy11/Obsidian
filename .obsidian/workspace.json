@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Data Structures.md",
+                "file": "1-5.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Data Structures"
+              "title": "1-5"
             }
           },
           {
@@ -48,8 +48,79 @@
               "icon": "lucide-file",
               "title": "Untitled"
             }
+          },
+          {
+            "id": "2b4b7b57cc60f2b2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "6. Asymptotic analysis, Big O,Omega,Theta notation definitions, amortized analysis, examples.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "6. Asymptotic analysis, Big O,Omega,Theta notation definitions, amortized analysis, examples"
+            }
+          },
+          {
+            "id": "a463839f136bf539",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "7. Vector.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "7. Vector"
+            }
+          },
+          {
+            "id": "2ee7e6e57344c68b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "8. Singly Linked List.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "8. Singly Linked List"
+            }
+          },
+          {
+            "id": "6fed7d364ddc998d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "9. Doubly linked list.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "9. Doubly linked list"
+            }
+          },
+          {
+            "id": "7c9f151dbbedb2a2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10. Iterators.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "10. Iterators"
+            }
           }
-        ]
+        ],
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -105,8 +176,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "f9fe31c38aab8d01",
@@ -200,13 +270,29 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "obsidian-spaced-repetition:Review flashcards": false
+      "obsidian-spaced-repetition:Review flashcards": false,
+      "math-indicator-changer:Change math indicator": false
     }
   },
-  "active": "ce8234400c4e3890",
+  "active": "edcb7d4779c504a7",
   "lastOpenFiles": [
-    "Untitled.md",
-    "Data Structures.md",
+    "7. Vector.md",
+    "Untitled.canvas",
+    "Матанализ.md",
+    "8. Singly Linked List.md",
+    "Pasted image 20241230150846.png",
+    "Exams.md",
+    "Pasted image 20241228175941.png",
+    "Pasted image 20241228173550.png",
+    "Pasted image 20241228173508.png",
+    "Pasted image 20241228173448.png",
+    "Pasted image 20241228165231.png",
+    "Untitled 1.md",
+    "flashcards.md",
+    "6. Asymptotic analysis, Big O,Omega,Theta notation definitions, amortized analysis, examples.md",
+    "10. Iterators.md",
+    "9. Doubly linked list.md",
+    "1-5.md",
     "Definitions library.md",
     "Obsidian/Untitled.md",
     "Obsidian/Untitled.canvas",
@@ -214,20 +300,12 @@
     "Obsidian/Pasted image 20241228173550.png",
     "Obsidian/Pasted image 20241228173508.png",
     "Obsidian/Pasted image 20241228173448.png",
-    "Obsidian/Pasted image 20241228165231.png",
     "Obsidian/Definitions library.md",
     "Obsidian/Data Structures.md",
     "Obsidian/Cpp quiz.md",
     "Obsidian/2024-12-28.md",
     "Obsidian",
     "2024-12-28.md",
-    "Untitled.canvas",
-    "flashcards.md",
-    "Cpp quiz.md",
-    "Pasted image 20241228175941.png",
-    "Pasted image 20241228173550.png",
-    "Pasted image 20241228173508.png",
-    "Pasted image 20241228173448.png",
-    "Pasted image 20241228165231.png"
+    "Cpp quiz.md"
   ]
 }
