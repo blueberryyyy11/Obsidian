@@ -1,4 +1,6 @@
 {
-  "cssTheme": "ITS Theme",
-  "theme": "obsidian"
+  "cssTheme": "Shimmering Focus",
+  "theme": "obsidian",
+  "baseFontSize": 17,
+  "nativeMenus": false
 }
